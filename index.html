@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>机器学习复习 · 西瓜书考点精讲</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Sidebar -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h2>🍉 西瓜书复习</h2>
+    <p class="subtitle">机器学习考点精讲</p>
+  </div>
+  <div class="progress-bar-container">
+    <div class="progress-label">复习进度</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-text" id="progressText">0%</div>
+  </div>
+  <ul class="nav-list" id="navList"></ul>
+  <div class="sidebar-footer">
+    <button id="darkModeToggle" class="btn-icon" title="切换深色模式">🌙</button>
+    <button id="resetProgress" class="btn-icon" title="重置进度">🔄</button>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main id="mainContent">
+  <div class="top-bar">
+    <button id="menuToggle" class="btn-icon">☰</button>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="搜索知识点...">
+      <span class="search-icon">🔍</span>
+    </div>
+    <div class="exam-info">
+      <span class="badge priority-high">高优先级</span>
+      <span class="badge priority-mid">中优先级</span>
+      <span class="badge priority-low">低优先级</span>
+    </div>
+  </div>
+
+  <div class="content-wrapper" id="contentWrapper">
+    <!-- Landing -->
+    <section class="chapter-section landing-section" id="landing">
+      <div class="landing-hero">
+        <h1>🍉 机器学习期末复习</h1>
+        <p class="landing-desc">基于周志华《机器学习》（西瓜书），覆盖全部11章核心考点。<br>包含：概念精讲 · 公式推导 · 计算示例 · 易错提醒</p>
+        <div class="exam-structure">
+          <h3>📋 考试结构</h3>
+          <div class="exam-grid">
+            <div class="exam-card">
+              <div class="exam-icon">📝</div>
+              <h4>选择/判断题</h4>
+              <p>每章1题，知识点无重复</p>
+            </div>
+            <div class="exam-card">
+              <div class="exam-icon">📖</div>
+              <h4>简答题</h4>
+              <p>章节不与计算题重叠</p>
+            </div>
+            <div class="exam-card">
+              <div class="exam-icon">🧮</div>
+              <h4>计算题</h4>
+              <p>侧重思想，严格按教材流程</p>
+            </div>
+          </div>
+        </div>
+        <div class="priority-guide">
+          <h3>🎯 章节优先级</h3>
+          <div class="priority-list">
+            <div class="priority-item high"><span class="priority-badge">高</span><strong>第4、5、6、7章</strong>（计算）<strong>第2、3、8、9章</strong>（简答）</div>
+            <div class="priority-item low"><span class="priority-badge">低</span><strong>第1、10、11章</strong>（选择/判断为主）</div>
+          </div>
+        </div>
+        <div class="key-formulas-preview">
+          <h3>🔑 必背公式速查</h3>
+          <div class="formula-grid">
+            <div class="formula-card" onclick="navigateTo('ch2')">
+              <span class="formula-tag">信息熵</span>
+              <span class="formula">$$H(D)=-\sum_{k=1}^{|\mathcal{Y}|} p_k \log_2 p_k$$</span>
+            </div>
+            <div class="formula-card" onclick="navigateTo('ch6')">
+              <span class="formula-tag">SVM对偶</span>
+              <span class="formula">$$\max_\alpha \sum \alpha_i - \frac{1}{2}\sum\sum \alpha_i\alpha_j y_iy_j x_i^Tx_j$$</span>
+            </div>
+            <div class="formula-card" onclick="navigateTo('ch7')">
+              <span class="formula-tag">贝叶斯</span>
+              <span class="formula">$$P(c|x)=\frac{P(c)P(x|c)}{P(x)}$$</span>
+            </div>
+            <div class="formula-card" onclick="navigateTo('ch2')">
+              <span class="formula-tag">查准率/查全率</span>
+              <span class="formula">$$P=\frac{TP}{TP+FP},\quad R=\frac{TP}{TP+FN}$$</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Back to top -->
+<button id="backToTop" class="btn-icon back-to-top" title="回到顶部">↑</button>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
