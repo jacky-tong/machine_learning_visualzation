@@ -4,7 +4,6 @@
 
   // ===== 全局状态 =====
   const PROGRESS_KEY = 'ml-review-progress';
-  const DARK_KEY = 'ml-review-dark';
   let activeChapter = null;
   let progress = JSON.parse(localStorage.getItem(PROGRESS_KEY) || '{}');
 
@@ -13,7 +12,6 @@
     buildNav();
     buildContent();
     bindEvents();
-    restoreDarkMode();
     updateProgressBar();
 
     // Render math after DOM is ready
@@ -175,9 +173,6 @@
       document.getElementById('sidebar').classList.toggle('open');
     });
 
-    // Dark mode toggle
-    document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
-
     // Reset progress
     document.getElementById('resetProgress').addEventListener('click', () => {
       if (confirm('确定要重置所有学习进度吗？此操作不可撤销。')) {
@@ -268,22 +263,6 @@
     const pct = totalCards > 0 ? Math.round((doneCards / totalCards) * 100) : 0;
     document.getElementById('progressFill').style.width = pct + '%';
     document.getElementById('progressText').textContent = pct + '%';
-  }
-
-  // ===== 深色模式 =====
-  function toggleDarkMode() {
-    document.body.classList.toggle('dark');
-    const isDark = document.body.classList.contains('dark');
-    localStorage.setItem(DARK_KEY, isDark);
-    document.getElementById('darkModeToggle').textContent = isDark ? '☀️' : '🌙';
-  }
-
-  function restoreDarkMode() {
-    const isDark = localStorage.getItem(DARK_KEY) === 'true';
-    if (isDark) {
-      document.body.classList.add('dark');
-      document.getElementById('darkModeToggle').textContent = '☀️';
-    }
   }
 
   // ===== 搜索 =====
