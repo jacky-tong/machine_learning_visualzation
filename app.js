@@ -52,6 +52,8 @@
   // ===== 构建内容 =====
   function buildContent() {
     const wrapper = document.getElementById('contentWrapper');
+    // 只移除动态生成的章节，保留首页 landing
+    wrapper.querySelectorAll('.chapter-section:not(#landing)').forEach(el => el.remove());
 
     chapters.forEach(ch => {
       const section = document.createElement('section');
@@ -181,8 +183,13 @@
         updateProgressBar();
         buildNav();
         buildContent();
-        // Re-bind events for new content
-        bindDynamicEvents();
+        // 回到首页
+        activeChapter = null;
+        history.pushState(null, null, '#');
+        document.querySelectorAll('.chapter-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        document.getElementById('landing').classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
 
